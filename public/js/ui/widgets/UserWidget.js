@@ -12,10 +12,10 @@ class UserWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element) {
-    if (element) {
-      this.element = element;
+    if (!element) {
+      throw new Error("comrad is not existent");
     } else {
-      throw new Error('Warning!');
+      this.element = element;
     }
   };
 
@@ -27,10 +27,9 @@ class UserWidget {
    * авторизованного пользователя
    * */
   update() {
-    const user = User.current();
-    const userName = document.querySelector('.user-name');
-    if (user.name !== undefined) {
-      userName.textContent = user.name;
-    };
-  };
+    const userName = User.current().name;
+    if (userName) {
+      document.querySelector(".user-name").textContent = userName;
+    }
+  }
 };

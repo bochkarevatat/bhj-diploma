@@ -68,13 +68,15 @@ class User {
    * */
   static login(data, callback) {
     createRequest({
-      url: this.URL + '/login',
-      method: 'POST',
-      responseType: 'json',
       data,
+      method: "POST",
+      url: this.HOST + this.URL + "/login",
+      responseType: "json",
       callback: (err, response) => {
-        if (response && response.user) {
+        if (response && response.success) {
           this.setCurrent(response.user);
+        } else {
+          console.log("no response" + err);
         }
         callback(err, response);
       }
@@ -91,15 +93,13 @@ class User {
     createRequest({
       url: this.URL + '/register',
       method: 'POST',
-      responseType: 'json',
       data,
       callback: (error, response) => {
         if (response && response.user) {
           this.setCurrent(response.user);
         }
         callback(error, response);
-
-      }
+      },
     });
   };
 

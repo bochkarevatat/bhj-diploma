@@ -51,10 +51,12 @@ class Sidebar {
       App.getModal('login').open();
     });
     itemLogout.addEventListener('click', () => {
-      User.logout((response) => {
-        if (response.success) {
-        App.setState('init');
-        User.unsetCurrent();
+      User.logout((error, response) => {
+        try {
+          App.setState('init');
+          throw error;
+        } catch (e) {
+          console.log(e);
         }
       });
     });

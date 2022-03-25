@@ -46,7 +46,6 @@ class User {
       url: this.URL + '/current',
       method: 'GET',
       responseType: 'json',
-      data,
       callback: (err, response) => {
         if (err === null) {
           callback(err, response);
@@ -94,11 +93,11 @@ class User {
       method: 'POST',
       responseType: 'json',
       data,
-      callback: (err, response) => {
+      callback: (error, response) => {
         if (response && response.user) {
           this.setCurrent(response.user);
         }
-        callback(err, response);
+        callback(error, response);
 
       }
     });

@@ -15,6 +15,7 @@ class AsyncForm {
   constructor(element) {
     if (element !== null) {
       this.element = element;
+     
     } else {
       throw new Error('element = null');
     };
@@ -30,6 +31,7 @@ class AsyncForm {
     this.element.addEventListener('submit', (e) => {
       e.preventDefault();
       this.submit();
+      console.log('click')
     })
   }
 
@@ -42,13 +44,12 @@ class AsyncForm {
    * */
   getData() {
     const formData = new FormData(this.element);
-    let entries = formData.entries();
-    let data = {};
-    for (let pair of entries) {
-      data[pair[0]] = pair[1];
-    }
-    return data;
-  }
+        let data = {};
+        for (let [name, value] of formData) {
+            data[name] = value;
+        }
+        return data;
+      }
 
   onSubmit(options) {
 

@@ -7,91 +7,16 @@
       "id": "1"
     },
     {
-      "id": "wb7sd4s8l11ofmc6"
+      "id": "wb7sd73wl1atzrtg"
     },
     {
-      "id": "wb7sd6a0l11oo5kf"
+      "id": "wb7sd4rsl1au4l9y"
     },
     {
-      "id": "wb7sd500l11p1q0n"
+      "id": "wb7sd4qcl1au4nu1"
     },
     {
-      "id": "wb7sd5v0l11pqdv6"
-    },
-    {
-      "id": "wb7sd4wcl11pxqi6"
-    },
-    {
-      "id": "wb7sd620l11pxrpq"
-    },
-    {
-      "id": "wb7sd5rol11pxsak"
-    },
-    {
-      "id": "wb7sd1a0l11pxsqx"
-    },
-    {
-      "id": "wb7sd1a0l11pxsrs"
-    },
-    {
-      "id": "wb7sd1osl11pxtcw"
-    },
-    {
-      "id": "wb7sd1osl11pxtds"
-    },
-    {
-      "id": "wb7sd3e0l12i7xnb"
-    },
-    {
-      "id": "wb7sd670l12iava7"
-    },
-    {
-      "id": "wb7sd6lkl12ifmgx"
-    },
-    {
-      "id": "wb7sd5owl132rt6k"
-    },
-    {
-      "id": "wb7sd3ekl15yzkgf"
-    },
-    {
-      "id": "wb7sd2dol15z8uo8"
-    },
-    {
-      "id": "wb7sd600l15zc00b"
-    },
-    {
-      "id": "wb7sd4yol15ze01a"
-    },
-    {
-      "id": "wb7sd5zkl15zso1a"
-    },
-    {
-      "id": "wb7sd58kl15zwmjb"
-    },
-    {
-      "id": "wb7sd1qgl160gku0"
-    },
-    {
-      "id": "wb7sd14ol1614nft"
-    },
-    {
-      "id": "wb7sd62cl161msgz"
-    },
-    {
-      "id": "wb7sd5yol161tvis"
-    },
-    {
-      "id": "wb7sd3o8l161zfni"
-    },
-    {
-      "id": "wb7sd6j4l161zm4q"
-    },
-    {
-      "id": "wb7sd6dcl16202ll"
-    },
-    {
-      "id": "wb7sd1x4l16204kd"
+      "id": "wb7sd50cl1avb226"
     }
   ],
   "accounts": [
@@ -109,6 +34,26 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "gjgj",
+      "user_id": "wb7sd4qcl1au4nu1",
+      "id": "wb7sd26ol1au50ve"
+    },
+    {
+      "name": "123",
+      "user_id": "wb7sd4qcl1au4nu1",
+      "id": "wb7sdxwl1audyhf"
+    },
+    {
+      "name": "ghj",
+      "user_id": "wb7sd4qcl1au4nu1",
+      "id": "wb7sdxwl1av353e"
+    },
+    {
+      "name": "jojo",
+      "user_id": "wb7sd50cl1avb226",
+      "id": "wb7sd62wl1avbj2b"
     }
   ],
   "transactions": [

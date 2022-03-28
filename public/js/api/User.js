@@ -10,11 +10,7 @@ class User {
    * */
   static URL = '/user';
   static setCurrent(user) {
-    const currentUser = {
-      id: this.id,
-      name: this.name,
-    };
-    localStorage.setItem('user', JSON.stringify(currentUser));
+    localStorage.user = JSON.stringify(user);
   }
 
   /**
@@ -22,7 +18,7 @@ class User {
    * пользователе из локального хранилища.
    * */
   static unsetCurrent() {
-    localStorage.removeItem('user');
+    delete localStorage.user;
   }
 
   /**
@@ -67,16 +63,16 @@ class User {
    * User.setCurrent.
    * */
   static login(data, callback) {
-    createRequest({
+    return createRequest({
       data,
       method: "POST",
-      url: this.HOST + this.URL + "/login",
+      url: this.URL + "/login",
       responseType: "json",
       callback: (err, response) => {
         if (response && response.success) {
           this.setCurrent(response.user);
         } else {
-          console.log("no response" + err);
+          console.log("Ответ не пришел" + err);
         }
         callback(err, response);
       }
@@ -91,16 +87,19 @@ class User {
    * */
   static register(data, callback) {
     createRequest({
-      url: this.URL + '/register',
       method: 'POST',
+      url: this.URL + '/register',
       data,
-      callback: (error, response) => {
-        if (response && response.user) {
-          this.setCurrent(response.user);
-        }
-        callback(error, response);
-      },
-    });
+      callback: (err, response) => {
+          if (err === null) {
+              if (response.success) {
+                  this.setCurrent(response.user);
+              } 
+              callback(err, response);
+          }
+      }
+  })
+  console.log(data);
   };
 
   /**
@@ -114,8 +113,9 @@ class User {
       callback: (err, response) => {
         this.unsetCurrent();
         callback(err, response);
-
       }
-    })
+    });
+  
+
   }
 }

@@ -16,7 +16,7 @@ class Entity {
       data,
       callback: (err, response) => {
         if (err === null) {
-          callback(err, response.data);
+          callback(err, response);
         } else {
           console.log(err);
         };

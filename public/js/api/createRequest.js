@@ -34,7 +34,7 @@ const createRequest = (options = {}) => {
   const xhr = new XMLHttpRequest;
   const formData = new FormData;
   xhr.responseType = 'json';
-  // console.log(options.data)
+  console.log(options.data)
   xhr.addEventListener('readystatechange', () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
       options.callback(null, xhr.response);

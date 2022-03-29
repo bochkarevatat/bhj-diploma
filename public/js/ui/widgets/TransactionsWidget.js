@@ -16,7 +16,7 @@ class TransactionsWidget {
       if (element) {
         this.element = element;
         this.registerEvents();
-        console.log(11)
+        console.log(element)
       } else {
         throw new Error('Элемент не существует');
       }

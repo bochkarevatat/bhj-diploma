@@ -110,6 +110,12 @@
       "email": "Vasja@Vasja",
       "password": "Vasja",
       "id": "wb7sd3okl1bqwi60"
+    },
+    {
+      "name": "Olga",
+      "email": "Olga@Olga",
+      "password": "Olga",
+      "id": "wb7sd77kl1cdrm6l"
     }
   ],
   "accounts": [
@@ -322,6 +328,16 @@
       "name": "dad",
       "user_id": "wb7sd3okl1bqwi60",
       "id": "wb7sdzol1br121d"
+    },
+    {
+      "name": "my",
+      "user_id": "wb7sd77kl1cdrm6l",
+      "id": "wb7sd5lwl1chagoy"
+    },
+    {
+      "name": "test",
+      "user_id": "wb7sd77kl1cdrm6l",
+      "id": "wb7sd4m8l1ckd813"
     }
   ],
   "transactions": [
@@ -459,6 +475,96 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "wb7sd7d0l1c9rl6l",
+      "type": "income",
+      "name": "12",
+      "sum": 12,
+      "account_id": "wb7sdzol1br0kw1",
+      "user_id": "wb7sd3okl1bqwi60",
+      "created_at": "2022-03-29T15:03:46.172Z"
+    },
+    {
+      "id": "wb7sd3okl1ca26az",
+      "type": "income",
+      "name": "for rest",
+      "sum": 2000,
+      "account_id": "wb7sde8l1bqy232",
+      "user_id": "wb7sd3okl1bqwi60",
+      "created_at": "2022-03-29T15:12:00.106Z"
+    },
+    {
+      "id": "wb7sd6bgl1cahyop",
+      "type": "expense",
+      "name": "for mam",
+      "sum": 1000,
+      "account_id": "wb7sde8l1bqy232",
+      "user_id": "wb7sd3okl1bqwi60",
+      "created_at": "2022-03-29T15:24:16.728Z"
+    },
+    {
+      "id": "wb7sd5t8l1cbop3r",
+      "type": "income",
+      "name": "fgh",
+      "sum": 123,
+      "account_id": "wb7sd5ggl1bqwszx",
+      "user_id": "wb7sd3okl1bqwi60",
+      "created_at": "2022-03-29T15:57:30.518Z"
+    },
+    {
+      "id": "wb7sd6bgl1cc7y95",
+      "type": "income",
+      "name": "fgh",
+      "sum": 123,
+      "account_id": "wb7sdzol1br121d",
+      "user_id": "wb7sd3okl1bqwi60",
+      "created_at": "2022-03-29T16:12:28.840Z"
+    },
+    {
+      "id": "wb7sd1pkl1chao39",
+      "type": "income",
+      "name": "jobs",
+      "sum": 2000,
+      "account_id": "wb7sd5lwl1chagoy",
+      "user_id": "wb7sd77kl1cdrm6l",
+      "created_at": "2022-03-29T18:34:33.716Z"
+    },
+    {
+      "id": "wb7sd3bgl1ckdhp2",
+      "type": "income",
+      "name": "home",
+      "sum": 2000,
+      "account_id": "wb7sd5lwl1chagoy",
+      "user_id": "wb7sd77kl1cdrm6l",
+      "created_at": "2022-03-29T20:00:44.245Z"
+    },
+    {
+      "id": "wb7sd4r4l1cks0xj",
+      "type": "income",
+      "name": "for kitchen",
+      "sum": 10000,
+      "account_id": "wb7sd5lwl1chagoy",
+      "user_id": "wb7sd77kl1cdrm6l",
+      "created_at": "2022-03-29T20:12:02.359Z"
+    },
+    {
+      "id": "wb7sd6pcl1cku0sz",
+      "type": "expense",
+      "name": "123",
+      "sum": 159,
+      "account_id": "wb7sd4m8l1ckd813",
+      "user_id": "wb7sd77kl1cdrm6l",
+      "created_at": "2022-03-29T20:13:35.506Z"
+    },
+    {
+      "id": "wb7sd6ncl1ckvwbc",
+      "type": "income",
+      "name": "from mam",
+      "sum": 15000,
+      "account_id": "wb7sd4m8l1ckd813",
+      "user_id": "wb7sd77kl1cdrm6l",
+      "created_at": "2022-03-29T20:15:02.999Z"
     }
   ]
 }

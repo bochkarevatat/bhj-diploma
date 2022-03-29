@@ -9,7 +9,7 @@ class CreateTransactionForm extends AsyncForm {
    * */
   constructor(element) {
     super(element);
-    // this.renderAccountsList();
+    this.renderAccountsList();
   }
 
   /**
@@ -17,18 +17,20 @@ class CreateTransactionForm extends AsyncForm {
    * Обновляет в форме всплывающего окна выпадающий список
    * */
   renderAccountsList() {
-  //   if (this.element === document.querySelector('#new-income-form')) {
-  //     Account.list(User.current(), (err, response) => {
-  //       document.querySelector('#income-accounts-list').innerHTML = '';
-  //         let html = [];
-  //         for (let i = 0; i < response.length; i++) {
-  //             html.push(`<option value="${response[i].id}">${response[i].name}</option>`);
-  //         }
-  //         document.querySelector('#income-accounts-list').insertAdjacentHTML('beforeend', html.join(''));
-  //         console.log(222)
-  //     });
-  // }
-  }
+    const accountsSelect = this.element.querySelector('.accounts-select');
+
+    Account.list(User.current(), (err, response) => {
+      if (response && response.data) {
+        accountsSelect.innerHTML = '';
+        response.data.forEach(element => {
+          accountsSelect.innerHTML += `<option value="${ element.id}">${ element.name}</option>`;
+        });
+      } else {
+        console.log(err)
+      };
+    });
+  };
+
 
   /**
    * Создаёт новую транзакцию (доход или расход)
@@ -37,6 +39,13 @@ class CreateTransactionForm extends AsyncForm {
    * в котором находится форма
    * */
   onSubmit(data) {
-
-  }
-}
+    Transaction.create(data, (error, response) => {
+      if (response && response.success) {
+        App.update();
+        this.element.reset();
+        App.getModal('newIncome').close();
+        App.getModal('newExpense').close();
+      }
+    })
+  };
+};

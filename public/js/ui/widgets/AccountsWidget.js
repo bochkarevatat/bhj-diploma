@@ -19,6 +19,7 @@ class AccountsWidget {
         this.element = element;
         this.registerEvents();
         this.update();
+        console.log(element)
       } else {
         throw new Error('Элемент не существует');
       }
@@ -40,12 +41,14 @@ class AccountsWidget {
       if (e.target.closest(".create-account")) {
         App.getModal("createAccount").open();
       }
+      
+    });
       this.element.addEventListener('click', (e) => {
         if (e.target.closest('.account')) {
           this.onSelectAccount(e.target.closest('.account'));
-          console.log('registerEvents');
+          // console.log(this.data);
         };
-      });
+      
     });
   };
 
@@ -68,9 +71,10 @@ class AccountsWidget {
         this.clear();
         for (let elem of response.data) {
           this.renderItem(elem);
+          // console.log(elem)
         };
       };
-      console.log('You have list racun')
+      
     });
   };
 
@@ -94,19 +98,11 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount(element) {
-    if (element) {
-      for (const i of document.querySelectorAll('.account')) {
-        if (i.classList.contains('active')) {
-          i.classList.remove('active');
-        };
-      };
-      element.classList.add('active');
-      App.showPage('transactions', {
-        account_id: element.dataset.id
-      });
-    } else {
-      return;
-    };
+    for (let item of document.querySelectorAll('.account')) {
+      item.classList.remove('active');
+  }
+  element.classList.add('active');
+  App.showPage('transactions', { account_id: `${element.dataset.id}`});
 
   };
 
@@ -133,7 +129,5 @@ class AccountsWidget {
    * */
   renderItem(data) {
     this.element.insertAdjacentHTML('beforeend', this.getAccountHTML(data));
-    console.log('check')
-
-  };
+      };
 };

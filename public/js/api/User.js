@@ -74,14 +74,11 @@ class User {
       url: this.URL + "/login",
       data,
       callback: (err, response) => {
-        if (err === null) {
-          if (response.success) {
-            this.setCurrent(response.user);
-          } else {
-            console.log(response.error);
-          }
-          callback(err, response);
-        }
+        if (response && response.user) {
+          this.setCurrent(response.user);
+      }
+      callback(err, response);
+        
       }
     });
   }

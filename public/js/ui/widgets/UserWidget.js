@@ -16,8 +16,7 @@ class UserWidget {
       throw new Error("comrad is not existent");
     } else {
       this.element = element;
-      // console.log(element)
-    }
+    };
   };
 
   /**
@@ -32,6 +31,6 @@ class UserWidget {
     if (userName) {
       document.querySelector(".user-name").textContent = userName;
       console.log(userName)
-    }
-  }
+    };
+  };
 };

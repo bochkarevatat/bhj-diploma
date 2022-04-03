@@ -116,6 +116,12 @@
       "email": "Olga@Olga",
       "password": "Olga",
       "id": "wb7sd77kl1cdrm6l"
+    },
+    {
+      "name": "olga",
+      "email": "olga@olga",
+      "password": "olga",
+      "id": "wb7sd6wsl1jqmxlq"
     }
   ],
   "accounts": [
@@ -338,6 +344,16 @@
       "name": "test",
       "user_id": "wb7sd77kl1cdrm6l",
       "id": "wb7sd4m8l1ckd813"
+    },
+    {
+      "name": "olga",
+      "user_id": "wb7sd6wsl1jqmxlq",
+      "id": "wb7sd6vkl1jqn6ce"
+    },
+    {
+      "name": "hasband",
+      "user_id": "wb7sd6wsl1jqmxlq",
+      "id": "wb7sd6zsl1jqns9f"
     }
   ],
   "transactions": [
@@ -565,6 +581,15 @@
       "account_id": "wb7sd4m8l1ckd813",
       "user_id": "wb7sd77kl1cdrm6l",
       "created_at": "2022-03-29T20:15:02.999Z"
+    },
+    {
+      "id": "wb7sd54ol1jqnjzy",
+      "type": "income",
+      "name": "for mama",
+      "sum": 23000,
+      "account_id": "wb7sd6vkl1jqn6ce",
+      "user_id": "wb7sd6wsl1jqmxlq",
+      "created_at": "2022-04-03T20:30:54.717Z"
     }
   ]
 }

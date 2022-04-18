@@ -10,28 +10,25 @@ class CreateTransactionForm extends AsyncForm {
   constructor(element) {
     super(element);
     this.renderAccountsList();
-  }
-
+  };
   /**
    * Получает список счетов с помощью Account.list
    * Обновляет в форме всплывающего окна выпадающий список
    * */
   renderAccountsList() {
     const accountsSelect = this.element.querySelector('.accounts-select');
-
-    Account.list(User.current(), (err, response) => {
+    Account.list({}, (err, response) => {
       if (response && response.data) {
         accountsSelect.innerHTML = '';
         response.data.forEach(element => {
-          accountsSelect.innerHTML += `<option value="${ element.id}">${ element.name}</option>`;
+          listAdd(element)
         });
-      } else {
-        console.log(err)
       };
     });
+    function listAdd(element) {
+      accountsSelect.innerHTML += `<option value="${element.id}">${element.name}</option>`;
+    };
   };
-
-
   /**
    * Создаёт новую транзакцию (доход или расход)
    * с помощью Transaction.create. По успешному результату
@@ -45,7 +42,7 @@ class CreateTransactionForm extends AsyncForm {
         this.element.reset();
         App.getModal('newIncome').close();
         App.getModal('newExpense').close();
-      }
-    })
+      };
+    });
   };
 };

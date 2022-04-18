@@ -351,9 +351,9 @@
       "id": "wb7sd6vkl1jqn6ce"
     },
     {
-      "name": "hasband",
-      "user_id": "wb7sd6wsl1jqmxlq",
-      "id": "wb7sd6zsl1jqns9f"
+      "name": "delete",
+      "user_id": "1",
+      "id": "wb7sd6ogl24e31bn"
     }
   ],
   "transactions": [
@@ -590,6 +590,51 @@
       "account_id": "wb7sd6vkl1jqn6ce",
       "user_id": "wb7sd6wsl1jqmxlq",
       "created_at": "2022-04-03T20:30:54.717Z"
+    },
+    {
+      "id": "wb7sd60wl1jqrbly",
+      "type": "expense",
+      "name": "for mam",
+      "sum": 1000,
+      "account_id": "wb7sd6vkl1jqn6ce",
+      "user_id": "wb7sd6wsl1jqmxlq",
+      "created_at": "2022-04-03T20:33:50.469Z"
+    },
+    {
+      "id": "wb7sd6s8l1jr670e",
+      "type": "income",
+      "name": "goga",
+      "sum": 2000,
+      "account_id": "wb7sd6vkl1jqn6ce",
+      "user_id": "wb7sd6wsl1jqmxlq",
+      "created_at": "2022-04-03T20:45:24.349Z"
+    },
+    {
+      "id": "wb7sd6akl1jrexgo",
+      "type": "income",
+      "name": "mama",
+      "sum": 500,
+      "account_id": "wb7sd6vkl1jqn6ce",
+      "user_id": "wb7sd6wsl1jqmxlq",
+      "created_at": "2022-04-03T20:52:11.879Z"
+    },
+    {
+      "id": "wb7sd4j8l24e3cd7",
+      "type": "income",
+      "name": "bank",
+      "sum": 100,
+      "account_id": "wb7sd6ogl24e31bn",
+      "user_id": "1",
+      "created_at": "2022-04-18T07:22:26.010Z"
+    },
+    {
+      "id": "wb7sd6o8l24e3l5y",
+      "type": "expense",
+      "name": "eat",
+      "sum": 20,
+      "account_id": "wb7sd6ogl24e31bn",
+      "user_id": "1",
+      "created_at": "2022-04-18T07:22:37.413Z"
     }
   ]
 }

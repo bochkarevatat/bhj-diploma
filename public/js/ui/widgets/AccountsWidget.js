@@ -14,21 +14,13 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element) {
-    try {
-      if (element) {
-        this.element = element;
-        this.registerEvents();
-        this.update();
-        console.log(element)
-      } else {
-        throw new Error('Элемент не существует');
-      }
-    } catch (error) {
-      console.log(error);
-    };
+    if (!element) {
+      throw new Error('Элемент не существует');
+    }
+    this.element = element;
+    this.registerEvents();
+    this.update();
   };
-
-
   /**
    * При нажатии на .create-account открывает окно
    * #modal-new-account для создания нового счёта
@@ -37,21 +29,15 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-    this.element.addEventListener("click", (e) => {
-      if (e.target.closest(".create-account")) {
-        App.getModal("createAccount").open();
-      }
-      
+    this.element.querySelector('.create-account').addEventListener('click', () => {
+      App.getModal('createAccount').open();
     });
-      this.element.addEventListener('click', (e) => {
-        if (e.target.closest('.account')) {
-          this.onSelectAccount(e.target.closest('.account'));
-          // console.log(this.data);
-        };
-      
+    this.element.addEventListener('click', (e) => {
+      if (e.target.closest('.account')) {
+        this.onSelectAccount(e.target.closest('.account'));
+      };
     });
   };
-
   /**
    * Метод доступен только авторизованным пользователям
    * (User.current()).
@@ -66,30 +52,26 @@ class AccountsWidget {
     if (!User.current()) {
       return;
     };
-    Account.list(User.current(), (err, response) => {
+    Account.list({}, (err, response) => {
       if (response && response.data) {
         this.clear();
         for (let elem of response.data) {
           this.renderItem(elem);
-          // console.log(elem)
         };
       };
-      
     });
   };
-
   /**
    * Очищает список ранее отображённых счетов.
    * Для этого необходимо удалять все элементы .account
    * в боковой колонке
    * */
   clear() {
-    const accountsAll = document.querySelectorAll(".account");
+    const accountsAll = this.element.querySelectorAll(".account");
     for (let account of accountsAll) {
       account.remove();
     };
   };
-
   /**
    * Срабатывает в момент выбора счёта
    * Устанавливает текущему выбранному элементу счёта
@@ -98,29 +80,28 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount(element) {
-    for (let item of document.querySelectorAll('.account')) {
+    for (let item of this.element.querySelectorAll('.account')) {
       item.classList.remove('active');
-  }
-  element.classList.add('active');
-  App.showPage('transactions', { account_id: `${element.dataset.id}`});
-
+    }
+    element.classList.add('active');
+    App.showPage('transactions', {
+      account_id: element.dataset.id
+    });
   };
-
   /**
    * Возвращает HTML-код счёта для последующего
    * отображения в боковой колонке.
    * item - объект с данными о счёте
    * */
   getAccountHTML(item) {
-    const html = `<li class="active account" data-id="${item.id}">
+    const html = `<li class="account" data-id="${item.id}">
                         <a href="#">
                             <span>${item.name}</span> /
                             <span>${item.sum} ₽</span>
                         </a>
                     </li>`
     return html;
-  }
-
+  };
   /**
    * Получает массив с информацией о счетах.
    * Отображает полученный с помощью метода
@@ -129,5 +110,5 @@ class AccountsWidget {
    * */
   renderItem(data) {
     this.element.insertAdjacentHTML('beforeend', this.getAccountHTML(data));
-      };
+  };
 };

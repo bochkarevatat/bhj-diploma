@@ -14,16 +14,9 @@ class Entity {
       method: 'GET',
       url: this.URL,
       data,
-      callback: (err, response) => {
-        if (err === null) {
-          callback(err, response);
-        } else {
-          console.log(err);
-        };
-      }
+      callback
     });
   };
-
   /**
    * Создаёт счёт или доход/расход с помощью запроса
    * на сервер. (в зависимости от того,
@@ -34,16 +27,9 @@ class Entity {
       method: 'PUT',
       url: this.URL,
       data,
-      callback: (err, response) => {
-        if (err === null) {
-          callback(err, response);
-        } else {
-          console.log(err);
-        };
-      }
+      callback
     });
   };
-
   /**
    * Удаляет информацию о счёте или доходе/расходе
    * (в зависимости от того, что наследуется от Entity)
@@ -53,13 +39,7 @@ class Entity {
       method: 'DELETE',
       url: this.URL,
       data,
-      callback: (err, response) => {
-        if (err === null) {
-          callback(err, response);
-        } else {
-          console.log(err);
-        }
-      }
+      callback
     });
   };
 };

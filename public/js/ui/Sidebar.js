@@ -10,8 +10,7 @@ class Sidebar {
   static init() {
     this.initAuthLinks();
     this.initToggleButton();
-  }
-
+  };
   /**
    * Отвечает за скрытие/показа боковой колонки:
    * переключает два класса для body: sidebar-open и sidebar-collapse
@@ -19,19 +18,12 @@ class Sidebar {
    * */
   static initToggleButton() {
     const sidebarToggle = document.querySelector('.sidebar-toggle');
-    const skinBlue = document.querySelector('.skin-blue')
-    sidebarToggle.addEventListener('click', () => {
-      // console.log("ok")
-      if (skinBlue.classList.contains('sidebar-open')) {
-        skinBlue.classList.remove('sidebar-open');
-        skinBlue.classList.add('sidebar-collapse');
-      } else {
-        skinBlue.classList.add('sidebar-open');
-        skinBlue.classList.remove('sidebar-collapse');
-      }
+    sidebarToggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.body.classList.toggle("sidebar-open");
+      document.body.classList.toggle("sidebar-collapse");
     });
   };
-
   /**
    * При нажатии на кнопку входа, показывает окно входа
    * (через найденное в App.getModal)
@@ -45,7 +37,6 @@ class Sidebar {
     const itemLogout = document.querySelector('.menu-item_logout');
     itemRegister.addEventListener('click', () => {
       App.getModal('register').open();
-      console.log("ok")
     });
     itemLogin.addEventListener('click', () => {
       App.getModal('login').open();
@@ -53,7 +44,7 @@ class Sidebar {
     itemLogout.addEventListener('click', () => {
       User.logout((error, response) => {
         if (response.success) {
-          App.setState("init");          
+          App.setState("init");
         }
       });
     });

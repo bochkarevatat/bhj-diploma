@@ -13,12 +13,10 @@ class UserWidget {
    * */
   constructor(element) {
     if (!element) {
-      throw new Error("comrad is not existent");
-    } else {
-      this.element = element;
+      throw new Error("Comrad is not existent");
     };
+    this.element = element;
   };
-
   /**
    * Получает информацию о текущем пользователе
    * с помощью User.current()
@@ -30,7 +28,6 @@ class UserWidget {
     const userName = User.current().name;
     if (userName) {
       document.querySelector(".user-name").textContent = userName;
-      console.log(userName)
     };
   };
 };

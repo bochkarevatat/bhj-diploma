@@ -12,25 +12,18 @@
     * через registerEvents()
     * */
    constructor(element) {
-     // console.log("problem NP")
-     try {
-       this.element = element;
-       this.registerEvents();
-       // console.log(element)
-     } catch (err) {
-       console.log(err);
+     if (!element) {
+       throw new Error("Переданный элемент TransactionsPage не существует");
      };
-
-
-   }
-
+     this.element = element;
+     this.registerEvents();
+   };
    /**
     * Вызывает метод render для отрисовки страницы
     * */
    update() {
      this.render(this.lastOptions);
-   }
-
+   };
    /**
     * Отслеживает нажатие на кнопку удаления транзакции
     * и удаления самого счёта. Внутри обработчика пользуйтесь
@@ -38,17 +31,20 @@
     * TransactionsPage.removeAccount соответственно
     * */
    registerEvents() {
-     this.element.addEventListener('click', event => {
-       if (event.target.classList.contains('remove-account')) {
-         this.removeAccount();
-       }
-
-       if (event.target.classList.contains('transaction__remove')) {
-         this.removeTransaction(event.target.dataset.id);
-       }
+     const removeAccount = document.querySelector('.remove-account');
+     removeAccount.addEventListener('click', () => {
+       this.removeAccount();
      });
-   }
-
+     if (document.querySelector('.transaction') !== null) {
+       for (const i of document.querySelectorAll('.transaction__remove')) {
+         i.addEventListener('click', (e) => {
+           this.removeTransaction({
+             id: e.target.closest('.transaction__remove').dataset.id
+           });
+         });
+       };
+     };
+   };
    /**
     * Удаляет счёт. Необходимо показать диаголовое окно (с помощью confirm())
     * Если пользователь согласен удалить счёт, вызовите
@@ -59,20 +55,22 @@
     * для обновления приложения
     * */
    removeAccount() {
-     if (this.lastOptions) {
-       if (confirm("Хотите удалить счет?")) {
-         Account.remove({
-           id: this.lastOptions.account_id
-         }, () => {
-           App.updateWidgets();
-         });
-         this.clear();
-       }
-     } else {
+     if (!this.lastOptions) {
        return;
      };
-   }
-
+     if (confirm('Вы желаете удалить счёт?')) {
+       Account.remove({
+           id: this.lastOptions.account_id
+         },
+         (err, response) => {
+           if (response && response.success) {
+             App.update();
+           };
+         }
+       );
+       this.clear();
+     };
+   };
    /**
     * Удаляет транзакцию (доход или расход). Требует
     * подтверждеия действия (с помощью confirm()).
@@ -80,15 +78,12 @@
     * либо обновляйте текущую страницу (метод update) и виджет со счетами
     * */
    removeTransaction(id) {
-     if (confirm("Хотите удалить эту транзакцию?")) {
+     if (confirm('Вы желаете удалить транзакцию ?')) {
        Transaction.remove(id, () => {
          App.update();
        });
-     } else {
-       return;
      };
-   }
-
+   };
    /**
     * С помощью Account.get() получает название счёта и отображает
     * его через TransactionsPage.renderTitle.
@@ -96,25 +91,18 @@
     * в TransactionsPage.renderTransactions()
     * */
    render(options) {
-     if (!options) {
-       return;
-     }
      this.lastOptions = options;
-
      Account.get(options.account_id, (err, response) => {
        if (response && response.success) {
          this.renderTitle(response.data.name);
-       }
+       };
      });
-
      Transaction.list(options, (err, response) => {
        if (response && response.success) {
          this.renderTransactions(response.data);
-       }
-
+       };
      });
-   }
-
+   };
    /**
     * Очищает страницу. Вызывает
     * TransactionsPage.renderTransactions() с пустым массивом.
@@ -124,21 +112,18 @@
      this.renderTransactions([]);
      this.renderTitle('Название счета');
      this.lastOptions = '';
-   }
-
+   };
    /**
     * Устанавливает заголовок в элемент .content-title
     * */
    renderTitle(name) {
      this.element.querySelector(".content-title").textContent = name;;
-   }
-
+   };
    /**
     * Форматирует дату в формате 2019-03-10 03:20:41 (строка)
     * в формат «10 марта 2019 г. в 03:20»
     * */
    formatDate(date) {
-
      const DMY = new Date(date).toLocaleString('ru', {
        day: "numeric",
        month: "long",
@@ -148,10 +133,8 @@
        hour: "numeric",
        minute: "numeric"
      });
-
      return `${DMY} в ${HM}`;
    };
-
    /**
     * Формирует HTML-код транзакции (дохода или расхода).
     * item - объект с информацией о транзакции
@@ -178,20 +161,19 @@
                </button>
            </div>
        </div>`
-
-   }
-
+   };
    /**
     * Отрисовывает список транзакций на странице
     * используя getTransactionHTML
     * */
    renderTransactions(data) {
-     data.forEach(item => {
-       this.getTransactionHTML(item);
-     });
-     if (data.length === 0) {
-       this.element.querySelector('.content').innerHTML = '';
+     const content = document.querySelector('.content');
+     let transArray = [];
+     for (let i = 0; i < data.length; i++) {
+       transArray.push(this.getTransactionHTML(data[i]));
      };
-
+     content.innerHTML = '';
+     content.insertAdjacentHTML('beforeend', transArray.join(''));
+     this.registerEvents();
    };
  };
